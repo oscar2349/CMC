@@ -42,9 +42,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 			customerModelDao.save(customerModel);
 		}
 
-		new ResponseEntity<>(new GenericErrorResponse("BFF|getEnterpriseUser|GEU02", "el customer ya existe, si desea actualizar use el metodo indicado"),
+		
+		return new ResponseEntity<>(new GenericErrorResponse("BFF|getEnterpriseUser|GEU02", "el customer ya existe, si desea actualizar use el metodo indicado"),
 				HttpStatus.UNPROCESSABLE_ENTITY);
-		return null;
 	}
 
 	@Override
