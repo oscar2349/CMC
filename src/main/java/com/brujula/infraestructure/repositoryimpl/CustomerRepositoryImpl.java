@@ -34,8 +34,16 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
 	@Override
 	public ResponseEntity<Object> crearCustomer(int id,CustomerDto customerDto) {
-		CustomerModel customerModel = new CustomerModel(id,customerDto.getFirstName(),customerDto.getLastName(),customerDto.getCompany());
-		customerModelDao.save(customerModel);
+		
+		Customer customer = getCustomer(id);
+		if (customer.getCompany() == null) {
+			
+			CustomerModel customerModel = new CustomerModel(id,customerDto.getFirstName(),customerDto.getLastName(),customerDto.getCompany());
+			customerModelDao.save(customerModel);
+		}
+
+		new ResponseEntity<>(new GenericErrorResponse("BFF|getEnterpriseUser|GEU02", "el customer ya existe, si desea actualizar use el metodo indicado"),
+				HttpStatus.UNPROCESSABLE_ENTITY);
 		return null;
 	}
 
