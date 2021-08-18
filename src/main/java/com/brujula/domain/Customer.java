@@ -21,7 +21,7 @@ public class Customer {
         this.setCompany(company);
     }
     
-    private Customer() {
+    public Customer() {
    
     }
 

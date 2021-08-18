@@ -5,8 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.NonNull;
+
 @Table(name = "customers")
 @Entity
+@AllArgsConstructor
 public class CustomerModel {
 
     @Id

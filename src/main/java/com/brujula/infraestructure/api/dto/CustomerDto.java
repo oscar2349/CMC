@@ -1,13 +1,27 @@
 package com.brujula.infraestructure.api.dto;
 
+import java.io.Serializable;
+
 import com.brujula.domain.Customer;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class CustomerDto {
+import lombok.NonNull;
 
+public class CustomerDto implements Serializable {
+
+	@JsonProperty("firstName")
+	@NonNull
     private String firstName;
+	
+	@JsonProperty("lastName")
+	@NonNull
     private String lastName;
+	
+	@JsonProperty("company")
     private String company;
 
+    
+    
     public static CustomerDto createCustomerDto(Customer customer){
         return new CustomerDto(customer.getFirstName(), customer.getLastName(), customer.getCompany());
     }
